@@ -1,0 +1,33 @@
+html {
+    background-color: rgb(10, 10, 10);
+}
+
+/* center all elements */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+p,
+h1,
+h2 {
+    color: white;
+    position: relative;
+}
+
+div#colourDisplay {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background-color: white;
+}
+
+div#buttons {
+    position: absolute;
+    padding-top: 10%;
+}
