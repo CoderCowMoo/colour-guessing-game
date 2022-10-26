@@ -35,4 +35,5 @@ div#buttons {
     position: absolute;
     display: flex;
     padding-top: 100%;
+    padding-left: 3rem;
 }

@@ -8,7 +8,7 @@ window.onload = function () {
     // get the colourDisplay div
     var colourDisplay = document.getElementById("colourDisplay");
     // give it a random colour
-    let correct_colour = randomColour();
+    let correct_colour = rgbToHex(randomColour());
     colourDisplay.style.backgroundColor = correct_colour;
 
     // loop over colourButton class buttons
@@ -18,7 +18,7 @@ window.onload = function () {
     for (let i = 0; i < colourButtons.length; i++) {
         // set innertext of button to random colour
         if (i != randomIndex) {
-            colourButtons[i].innerText = randomColour();
+            colourButtons[i].innerText = rgbToHex(randomColour());
         } else {
             colourButtons[i].innerText = correct_colour;
         }
@@ -66,4 +66,18 @@ function guessed(colour_string, correct_colour) {
         wrong_text.style.fontWeight = "bold";
         document.body.appendChild(wrong_text);
     }
+}
+
+// function to convert string rgb(r, g, b) into hex colour
+function rgbToHex(rgb_string) {
+    // split string into array of numbers using regex
+    let rgb_array = rgb_string.match(/\d+/g);
+    // github copilot will write the following comment very intelligently
+    // for an input of rgb(255, 255, 255) it will return #ffffff
+    // convert each number to hex
+    for (let i = 0; i < rgb_array.length; i++) {
+        rgb_array[i] = parseInt(rgb_array[i]).toString(16);
+    }
+    // join array into string
+    return "#" + rgb_array.join("");
 }
