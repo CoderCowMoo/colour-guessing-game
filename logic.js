@@ -24,7 +24,46 @@ window.onload = function () {
         }
         // add an event listener to each button
         colourButtons[i].addEventListener("click", function () {
-            guessed(colourButtons[i].innerText);
+            guessed(colourButtons[i].innerText, correct_colour);
         });
+    }
+}
+
+function guessed(colour_string, correct_colour) {
+    if (colour_string == correct_colour) {
+        if (document.getElementById("wrong_text") != null) {
+            document.getElementById("wrong_text").remove();
+        }
+        let victory_text = document.createElement("div");
+        // set id to be victory_text
+        victory_text.id = "victory_text";
+        victory_text.innerText = "You win!";
+        // colour victory_text green and bold
+        victory_text.style.color = "green";
+        victory_text.style.fontWeight = "bold";
+        document.body.appendChild(victory_text);
+        // loop over and disable colourButtons
+        var colourButtons = document.getElementsByClassName("colourButton");
+        for (let i = 0; i < colourButtons.length; i++) {
+            colourButtons[i].disabled = true;
+        }
+        // set 1 second time delay
+        setTimeout(function () {
+            document.location.reload();
+        }, 1000);
+
+    } else {
+        // if wrong_text already exists, remove it
+        if (document.getElementById("wrong_text") != null) {
+            document.getElementById("wrong_text").remove();
+        }
+        let wrong_text = document.createElement("div");
+        // set id to be wrong_text
+        wrong_text.id = "wrong_text";
+        wrong_text.innerText = "Wrong!";
+        // colour wrong_text red and bold
+        wrong_text.style.color = "red";
+        wrong_text.style.fontWeight = "bold";
+        document.body.appendChild(wrong_text);
     }
 }
